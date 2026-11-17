@@ -1,0 +1,63 @@
+site-ia-licoes/
+│
+├── backend/
+│   ├── app/
+│   │   ├── __init__.py
+│   │   ├── main.py              # ponto de entrada da API (FastAPI)
+│   │   ├── config.py            # configurações e variáveis de ambiente
+│   │   │
+│   │   ├── routes/              # rotas da API
+│   │   │   ├── __init__.py
+│   │   │   ├── chat.py          # perguntas e respostas com a IA
+│   │   │   ├── tarefas.py       # criar, listar e concluir tarefas
+│   │   │   └── usuarios.py      # cadastro e login
+│   │   │
+│   │   ├── services/            # lógica de negócio
+│   │   │   ├── __init__.py
+│   │   │   ├── ia_service.py    # comunicação com a API de IA
+│   │   │   └── tarefas_service.py
+│   │   │
+│   │   ├── models/              # modelos do banco de dados
+│   │   │   ├── __init__.py
+│   │   │   ├── usuario.py
+│   │   │   └── tarefa.py
+│   │   │
+│   │   ├── schemas/             # validação dos dados (Pydantic)
+│   │   │   ├── __init__.py
+│   │   │   ├── chat.py
+│   │   │   └── tarefa.py
+│   │   │
+│   │   ├── prompts/             # instruções da IA (como ela explica as lições)
+│   │   │   └── tutor.txt
+│   │   │
+│   │   └── database.py          # conexão com o banco (SQLite no início)
+│   │
+│   ├── tests/
+│   │   └── test_chat.py
+│   │
+│   ├── requirements.txt
+│   └── .env                     # chaves secretas (nunca subir no Git)
+│
+├── frontend/
+│   ├── index.html               # página inicial
+│   ├── chat.html                # tela de conversa com a IA
+│   ├── tarefas.html             # lista de tarefas e lições
+│   │
+│   ├── css/
+│   │   ├── style.css
+│   │   └── chat.css
+│   │
+│   ├── js/
+│   │   ├── api.js               # chamadas ao backend
+│   │   ├── chat.js
+│   │   └── tarefas.js
+│   │
+│   └── assets/
+│       ├── img/
+│       └── icons/
+│
+├── docs/
+│   └── README.md                # como rodar e usar o projeto
+│
+├── .gitignore
+└── README.md
