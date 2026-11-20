@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Task AI: ferramentas inteligentes para estudantes organizarem a rotina e se tornarem bons alunos.">
+  <title>Task AI | Seu assistente de estudos</title>
+
+  <!-- Importa o CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ============ CABEÇALHO ============ -->
+  <header class="header">
+    <div class="container header-content">
+      <a href="#inicio" class="logo">
+        <span class="logo-icon">🎓</span> Task<span class="logo-destaque">AI</span>
+      </a>
+
+      <!-- Botão do menu (aparece só no celular) -->
+      <button id="menu-toggle" class="menu-toggle" aria-label="Abrir menu">☰</button>
+
+      <!-- Menu de navegação -->
+      <nav id="menu" class="menu">
+        <a href="#inicio">Início</a>
+        <a href="#ferramentas">Ferramentas</a>
+        <a href="#dicas">Dicas</a>
+        <a href="#contato">Contato</a>
+        <button id="tema-btn" class="btn-tema" aria-label="Alternar tema">🌙</button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- ============ PÁGINA PRINCIPAL ============ -->
+    <section id="inicio" class="hero">
+      <div class="container hero-content">
+        <div class="hero-texto">
+          <h1>Estude melhor com a <span class="logo-destaque">Task AI</span></h1>
+          <p>
+            Uma assistente que ajuda você a organizar tarefas, calcular notas
+            e manter o foco. Pequenos hábitos todos os dias formam grandes alunos.
+          </p>
+          <div class="hero-botoes">
+            <a href="#ferramentas" class="btn btn-primario">Começar agora</a>
+            <button id="btn-motivacao" class="btn btn-secundario">💡 Me motive!</button>
+          </div>
+          <p id="mensagem-motivacao" class="mensagem-motivacao" aria-live="polite"></p>
+        </div>
+
+        <!-- Imagem em SVG (não precisa de arquivo externo) -->
+        <div class="hero-imagem">
+          <svg viewBox="0 0 300 260" role="img" aria-label="Ilustração de um livro aberto com uma lâmpada">
+            <ellipse cx="150" cy="230" rx="110" ry="14" fill="rgba(0,0,0,.12)"/>
+            <path d="M40 90 Q95 70 150 95 L150 215 Q95 190 40 210 Z" fill="#6c5ce7"/>
+            <path d="M260 90 Q205 70 150 95 L150 215 Q205 190 260 210 Z" fill="#a29bfe"/>
+            <g stroke="#fff" stroke-width="4" stroke-linecap="round" opacity=".8">
+              <line x1="62" y1="120" x2="125" y2="130"/>
+              <line x1="62" y1="145" x2="125" y2="155"/>
+              <line x1="62" y1="170" x2="125" y2="180"/>
+              <line x1="175" y1="130" x2="238" y2="120"/>
+              <line x1="175" y1="155" x2="238" y2="145"/>
+            </g>
+            <circle cx="150" cy="45" r="26" fill="#ffeaa7"/>
+            <rect x="140" y="68" width="20" height="12" rx="3" fill="#fdcb6e"/>
+            <g stroke="#fdcb6e" stroke-width="4" stroke-linecap="round">
+              <line x1="150" y1="5" x2="150" y2="0"/>
+              <line x1="112" y1="20" x2="106" y2="14"/>
+              <line x1="188" y1="20" x2="194" y2="14"/>
+            </g>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SEÇÃO 1: FERRAMENTAS ============ -->
+    <section id="ferramentas" class="secao">
+      <div class="container">
+        <h2 class="titulo-secao">🛠️ Ferramentas para o seu dia a dia</h2>
+        <p class="subtitulo-secao">Tudo funciona direto no seu navegador, sem cadastro.</p>
+
+        <div class="grid">
+
+          <!-- Ferramenta 1: Lista de tarefas -->
+          <article class="card" data-animar>
+            <h3>📝 Lista de tarefas</h3>
+            <form id="form-tarefa" class="linha">
+              <input type="text" id="input-tarefa" placeholder="Ex.: Estudar matemática" maxlength="60" autocomplete="off">
+              <button type="submit" class="btn btn-primario">Adicionar</button>
+            </form>
+            <p id="erro-tarefa" class="erro" aria-live="polite"></p>
+            <ul id="lista-tarefas" class="lista-tarefas"></ul>
+            <div class="rodape-card">
+              <span id="contador-tarefas">0 tarefas</span>
+              <button id="limpar-concluidas" class="btn btn-pequeno">Limpar concluídas</button>
+            </div>
+          </article>
+
+          <!-- Ferramenta 2: Calculadora de média -->
+          <article class="card" data-animar>
+            <h3>🧮 Calculadora de média</h3>
+            <div class="campos-notas">
+              <input type="number" class="nota" min="0" max="10" step="0.1" placeholder="Nota 1">
+              <input type="number" class="nota" min="0" max="10" step="0.1" placeholder="Nota 2">
+              <input type="number" class="nota" min="0" max="10" step="0.1" placeholder="Nota 3">
+              <input type="number" class="nota" min="0" max="10" step="0.1" placeholder="Nota 4">
+            </div>
+            <div class="linha">
+              <button id="btn-calcular" class="btn btn-primario">Calcular média</button>
+              <button id="btn-limpar-notas" class="btn btn-secundario">Limpar</button>
+            </div>
+            <p id="resultado-media" class="resultado" aria-live="polite">Preencha as notas (0 a 10).</p>
+          </article>
+
+          <!-- Ferramenta 3: Pomodoro -->
+          <article class="card" data-animar>
+            <h3>⏱️ Temporizador Pomodoro</h3>
+            <div class="abas">
+              <button class="aba ativa" data-minutos="25">Foco 25min</button>
+              <button class="aba" data-minutos="5">Pausa 5min</button>
+            </div>
+            <div id="tempo" class="tempo">25:00</div>
+            <div class="linha centro">
+              <button id="btn-iniciar" class="btn btn-primario">Iniciar</button>
+              <button id="btn-pausar" class="btn btn-secundario">Pausar</button>
+              <button id="btn-reiniciar" class="btn btn-secundario">Reiniciar</button>
+            </div>
+            <p id="status-pomodoro" class="resultado" aria-live="polite"></p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SEÇÃO 2: DICAS ============ -->
+    <section id="dicas" class="secao secao-alt">
+      <div class="container">
+        <h2 class="titulo-secao">📚 Dicas para ser um bom aluno</h2>
+        <p class="subtitulo-secao">Escolha uma categoria e descubra uma dica.</p>
+
+        <div class="filtros">
+          <button class="filtro ativo" data-categoria="todas">Todas</button>
+          <button class="filtro" data-categoria="foco">Foco</button>
+          <button class="filtro" data-categoria="organizacao">Organização</button>
+          <button class="filtro" data-categoria="memoria">Memória</button>
+        </div>
+
+        <div class="caixa-dica" data-animar>
+          <p id="texto-dica" class="texto-dica">Clique no botão abaixo para ver uma dica de estudo!</p>
+          <button id="btn-dica" class="btn btn-primario">✨ Nova dica</button>
+        </div>
+
+        <div class="grid pequenos">
+          <div class="mini-card" data-animar><span>🎯</span><h4>Defina metas</h4><p>Metas pequenas e claras mantêm você motivado.</p></div>
+          <div class="mini-card" data-animar><span>😴</span><h4>Durma bem</h4><p>O sono ajuda o cérebro a fixar o que você aprendeu.</p></div>
+          <div class="mini-card" data-animar><span>🔁</span><h4>Revise sempre</h4><p>Revisar em dias diferentes fortalece a memória.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SEÇÃO 3: CONTATO ============ -->
+    <section id="contato" class="secao">
+      <div class="container container-estreito">
+        <h2 class="titulo-secao">💬 Fale com a gente</h2>
+        <p class="subtitulo-secao">Envie uma sugestão para melhorarmos a Task AI.</p>
+
+        <form id="form-contato" class="card form-contato" novalidate>
+          <label for="nome">Nome</label>
+          <input type="text" id="nome" placeholder="Seu nome">
+          <small class="erro" id="erro-nome"></small>
+
+          <label for="email">E-mail</label>
+          <input type="email" id="email" placeholder="voce@email.com">
+          <small class="erro" id="erro-email"></small>
+
+          <label for="mensagem">Mensagem</label>
+          <textarea id="mensagem" rows="4" placeholder="Escreva sua sugestão (mínimo 10 caracteres)"></textarea>
+          <small class="erro" id="erro-mensagem"></small>
+
+          <button type="submit" class="btn btn-primario">Enviar mensagem</button>
+          <p id="sucesso-form" class="sucesso" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ RODAPÉ ============ -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <p>© <span id="ano">2026</span> Task AI. Feito para estudantes.</p>
+      <button id="btn-topo" class="btn btn-pequeno">↑ Voltar ao topo</button>
+    </div>
+  </footer>
+
+  <!-- Importa o JavaScript (no final, para o HTML já estar carregado) -->
+  <script src="script.js"></script>
+</body>
+</html>
